@@ -1,0 +1,9 @@
+#!/bin/bash
+#ver bitacora
+
+for file in `ls -1 *.$1`
+do
+printf "rm ~/thesis/figures/$file\n$"
+rm ~/thesis/figures/$file
+done
+

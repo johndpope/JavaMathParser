@@ -1,0 +1,1282 @@
+! X Resource file for Mathematica X Front End 
+!
+! Resources that you can set. Values show defaults.
+!
+! CDE users should search this for CDE to see what they
+! should change.
+
+!
+! Application Resources that are also command line options
+! Use mathematica -help for more info.
+
+!*XMathematica.width: 500
+!*XMathematica.height: 600
+
+!*topDirectory: /path/to/install/dir
+
+!*printCommand: lpr
+
+! Update modifier keys if they are not set
+!*updateModKeys: TRUE
+
+! Use these keysyms for above, VoidSymbol means don't set that modifier
+!*mod1KeySym: Meta_L
+!*mod2KeySym: Alt_L
+
+! 0 is auto, otherwise use these to explicitly set the resolution
+!*screenXResolution: 0
+!*screenYResolution: 0
+
+! set this higher for slow networks
+!*backgroundTaskDelay: 200
+
+! for your browser
+!*singleLaunch: FALSE
+
+! make this 0 for off
+!*blinkRate: 0
+
+! For keyboards with KeySyms defined by using Mod+Key
+!*pureKeys: FALSE
+
+!
+! Set these if you need to change what the FE uses for Primary (Command)
+! and Secondary (Option) modifier keys.
+!
+!*primaryModifierMask: Mod2Mask
+!*secondaryModifierMask: Mod3Mask
+
+
+! Start front end without caches or defaults.
+!*cleanStart: FALSE
+
+! How wide error/warning messages should be
+!*labelWordWrap: 75
+
+! License information will be printed to stderr
+!*lmverbose: TRUE
+
+! Watch the CLIPBOARD property
+!*watchCLIPBOARD: TRUE
+
+! Use the "best" visual for running the XFE
+!*best: TRUE
+
+! For the new file browser
+
+*XmGUIFileBox*XmTextField.baseTranslations: \
+#override \n\
+Ctrl<Key>d: GUIFileBoxCompleteSelection() \n\
+Ctrl<Key>f: GUIFileBoxScrollToFirstFile()
+
+*XmGUIFileBox*XmIconList.baseTranslations: \
+#override \n\
+Ctrl<Key>f: GUIFileBoxScrollToFirstFile()
+
+*XmGUIFileBox*FileName.labelString: File name:
+
+*XmGUIFileBox*XmLabel*alignment: ALIGNMENT_BEGINNING
+*XmGUIFileBox*highlightOnEnter: TRUE
+
+*XmGUIFileBox*Filter.labelString: Match files with:
+
+*XmMainWindow*XmScrollBar.increment: 12
+
+
+! A decent looking font for buttons/text fields, etc
+! CDE: comment this out.
+!*Menu*fontList: -*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*
+
+*XmLabel.alignment: ALIGNMENT_BEGINNING
+*XmPushButton.alignment: ALIGNMENT_CENTER
+*XmPushButtonGadget.alignment: ALIGNMENT_CENTER
+
+! The background color everyone seems to be using these days.
+! CDE: comment this out.
+
+!*background: #c4c4c4
+
+!*labelEnterColor: Blue
+
+! The Motif toggle buttons are a little hard to see, so
+! this will make the ON state more visible
+
+*XmToggleButton.selectColor: black
+*fillOnSelect: TRUE
+
+*XmFENotebook.highlightOnEnter: TRUE
+*XmFENotebook.highlightColor: purple
+
+*XmMList*visibleItemCount: 6
+
+*XmFENotebook.baseTranslations: \
+#override \n\
+<Btn1Down>,<Btn1Up>: selection-put() \n\
+<Btn2Down>: selection-get() \n\
+<KeyPress>osfPaste: paste-from-clipboard() \n\
+<KeyPress>osfCopy: copy-to-clipboard()
+
+!*marginWidth: 1
+
+! Make editable text places a lighter gray
+
+! CDE 
+!*XmTextField.background: gray85
+!*XmText.background: gray85
+!*XmList.background: gray85
+
+!
+! Resources to set visual,depth and colormap usage.
+! You can use -visualChooser or *visualChooser: TRUE to
+! choose interactively.
+
+! Run the XFE using only 2 colors
+!*mono: FALSE
+
+! Create a private colormap for the XFE, will
+! probably cause flashing when focus changes.
+
+!*usePrivateColormap: FALSE
+
+! Use a different visual class.
+
+!*visualClass: TrueColor
+
+! Set the application depth
+
+!*applicationDepth: 24
+
+! Use a specific Standard Colormap property
+
+!*standardColormap: RGB_GRAY_MAP
+
+! If you want the XFE to use as many colors as
+! possible, always set this to FALSE. Otherwise, you
+! should use xscm or xstdcmap and create a standard
+! on your default colormap and leave this as TRUE
+! Unlike earlier versions of the XFE, a standard colormap
+! will NOT automatically get created.
+
+!*useStandardColormaps: TRUE
+
+!
+! Limit the XFE's greedy consumption of allocated color cells.
+! This is really going to max at n*n*n colors.
+!*maxPercentColormapAllocated: 100
+
+!
+! Use a specific visual id
+!
+
+!*visualID: 24
+
+! Enable the EditRes protocol
+!*allowEditRes: TRUE
+
+! If you get stripes in your dither patterns try setting this to 8
+!*tileWidth: 8
+
+
+!
+! CDE: This stops the XFE from using the dynamic color object stuff.
+! This is necessary since the color object stuff only works with the
+! default visual.  If you set this to true and have a private colormap
+! chances are that the XFE will not look right.
+!
+
+*useColorObj: FALSE
+
+! Browser to use for opening remote files
+*wwwBrowser: (URL=%s; (netscape -remote "openURL($URL)" > /dev/null) || netscape $URL) 
+! Or use this line instead if you're running off a remote machine
+!*wwwBrowser: netscape -remote "openURL(%s)"
+
+
+! These are for Motif drag-n-drop, but turning them off
+! makes things much faster.
+
+*dragInitiatorProtocolStyle: XmDRAG_NONE
+*dragReceiverProtocolStyle: XmDRAG_NONE
+
+
+
+
+!
+!
+!
+!
+! You shouldn't modify anything past this point.
+!
+!
+!
+!
+!
+
+! For the option inspector widget
+
+*XmOutline.headerForeground: blue
+*XmOutline.visibleItemCount: 10
+
+*XmOutline*XmList.baseTranslations: \
+#override \n\
+<Key>osfCancel: OutlineCancelMenu()
+
+*_openButton.labelString: Open...
+*_newButton.labelString: New...
+*_quitButton.labelString: Quit
+
+*_okButton.labelString: OK
+*_cancelButton.labelString: Cancel
+*_defaultsButton.labelString: Defaults
+*_setDefaultsButton.labelString: Set Defaults
+*_helpButton.labelString: Help...
+*_saveButton.labelString: Save
+*_discardChangesButton.labelString: Don't Save
+*_applyButton.labelString: Apply
+*_nextButton.labelString: Find Next
+*_allButton.labelString: Find All
+*_replaceAndFindButton.labelString: Replace and Find Again
+*_replaceButton.labelString: Replace
+*_replaceAllButton.labelString: Replace All
+*_yesButton.labelString: Yes
+*_noButton.labelString: No
+*_continueButton.labelString: Continue
+*_pasteButton.labelString: Paste
+*_findButton.labelString: Find...
+*_okForeverButton.labelString: Don't Show Again
+*_pauseButton.labelString: Pause
+*_restartButton.labelString: Restart
+*_copyButton.labelString: Copy
+*_lookupButton.labelString: Lookup
+*_gotoButton.labelString: Go To:
+
+*AboutBoxDialog._da.foreground: blue
+
+*_helpButton.foreground: Purple
+
+! ErrorDialog/ModalErrorDialog
+
+*ErrorDialog._label.foreground: Red
+*ModalErrorDialog._label.foreground: Red
+*_timeLabel.labelString: Time:
+
+! SaveAsSpecialOptionsDialog
+
+*_fileFormat.labelString: File format
+*_notebookButton.labelString: Notebook
+*_packageButton.labelString: Package
+*_plainTextButton.labelString: Plain text
+*_rtfButton.labelString: RTF
+
+*_formattingInformation.labelString: Formatting information
+*_includeCellHeaderLines.labelString: Include cell header lines
+*_commentOutNonInitCells.labelString: Comment out non-init cells
+
+*_cellContents.labelString: Cell contents
+*_includeUnformattedText.labelString: Include unformatted text
+*_includeFormattedText.labelString: Include formatted text
+*_includeDisplayedFormOnly.labelString: Include displayed form only
+*_includeTextFontInformation.labelString: Include text font information
+*_includeCellInOutPrompts.labelString: Include cell In/Out prompts
+*_includeCellKeywords.labelString: Include cell keywords
+
+*_blankLinesBetweenCells.labelString: Blank lines between cells
+*_noneButton.labelString: None
+*_oneButton.labelString: One
+*_twoButton.labelString: Two
+*_threeButton.labelString: Three
+*_insertLineBreaks.labelString: Insert line breaks
+
+! OpenOptionsDialog
+
+*_fileReadingMethod.labelString: File reading method:
+*_characterEncodingLabel.labelString: Character encoding:
+*_listAllFileTypes.labelString: List all known file types
+*_listOnlyKnownFileTypes.labelString: List only known file types
+
+! SaveChangesWarningDialog
+
+*_saveChangesTo.labelString: Save changes to file %s?
+
+! PrintingOptionsDialog
+
+*_printCellBrackets.labelString: Print cell brackets
+*_printRegistrationMarks.labelString: Print registration marks
+*_printMultiplePagesForWideCells.labelString: Print multiple pages for wide cells
+*_getMarginsFromWindowWidth.labelString: Get margins from window width
+*_marginsIn.labelString: Margins in
+*_top.labelString: Top
+*_bottom.labelString: Bottom
+*_right.labelString: Right
+*_left.labelString: Left
+*_marginType.labelString: %s
+
+! ShortFormSearchDialog/LongFormSearchDialog
+
+*_searchFor.labelString: Search for
+*_ignoreCase.labelString: Ignore case
+*_wrapAround.labelString: Wrap around
+
+*_replaceWith.labelString: Replace with
+*_literal.labelString: literal
+*_grep.labelString: grep
+
+! EvaluateSettingsDialog
+
+*_placingOutputCells.labelString: Placing output cells
+*_outputCellsAreGroupedWithInput.labelString: Output cells are grouped with input
+*_multipleOutputCellsAreGroupedTogether.labelString: Multiple output cells are grouped together
+
+*_placingPrintOutput.labelString: Placing print output
+*_placePrintOutputAsItIsGenerated.labelString: Place printed output as it is generated
+*_placeEachPrintLineInASeparateCell.labelString: Place each print line in a separate cell
+
+*_placingMessages.labelString: Placing messages
+*_placeAllMessagesInMessagesWindow.labelString: Place all messages in messages window
+*_beepWhenAKernelMessageIsGenerated.labelString: Beep when a kernel message is generated
+
+*_placingInOutNames.labelString: Placing In/Out names
+*_appendCurrentTimeToInOutNames.labelString: Append current time to In/Out names
+*_assignInOutNamesToSideEffectCells.labelString: Assign In/Out names to side effect cells
+
+*_afterEvaluationIsDone.labelString: After an evaluation
+*_lockInputCellsAfterEvaluation.labelString: Lock input cells after evaluation
+*_beepWhenAnEvaluationIsFinished.labelString: Beep when an evaluation is finished
+*_displayClockTimingForEachEval.labelString: Display clock timing for each evaluation
+
+*_lineBreakingOutput.labelString: Line breaking output
+*_breakLinesToFitCurrentWindowWidth.labelString: Break lines to fit current window width
+*_breakLinesToFitCurrentPrintingPageWidth.labelString: Break lines to fit current printing page width
+*_breakAt.labelString: Break at
+*_characterWidths.labelString: character widths
+
+*_generatingUnformattedText.labelString: Generating unformatted text
+*_generateUnformattedTextForAllResults.labelString: Generate unformatted text for all results
+*_neverGenerateUnformattedText.labelString: Never generate unformatted text
+*_exceptForThoseContainingGraphicsOrShort.labelString: Except for those containing graphics or short
+
+*_initializationCells.labelString: Initialization cells
+*_alwaysLoadInitializationCellsWithoutAsking.labelString: Always load initialization cells
+*_neverLoadInitializationCells.labelString: Never load initialization cells
+*_askEachTimeANotebookIsOpened.labelString: Ask each time a notebook is opened
+
+
+! QuitLocalKernelDialog
+
+*_reallyQuitTheLocalKernel.labelString: \
+Do you really want to quit the kernel?\n\
+You will lose any Mathematica definitions you have not saved.
+
+! QuitRemoteKernelDialog
+
+*_reallyQuitRemoteKernel.labelString: \
+Do you really want to quit this remote kernel?\n\
+You will lose any Mathematica definitions you have not saved.
+
+! InitializeNotebookDialog
+*_doYouWantToInitializeNotebook.labelString: Do you want to initialize the notebook?
+
+! EstablishRemoteKernelDialog
+
+*_doYouWantToUseRemoteKernel.labelString: \
+Do you want Mathematica to begin using a remote kernel now?\n\
+(Click Yes only if you have just started a new remote kernel.)
+
+
+! InterruptDialog
+
+*_evaluationControl.labelString: Evaluation Control
+*_abortCommandBeginEvaluation.labelString: Abort Command Being Evaluated
+*_enterSubsession.labelString: Enter Subsession
+
+*_mathLinkControl.labelString: MathLink Control
+*_sendInterruptToLinkedProgram.labelString: Send Interrupt to Linked Program
+*_sendAbortToLinkedProgram.labelString: Send Abort to Linked Program
+*_killLinkedProgram.labelString: Kill Linked Program
+
+! KernelInputDialog
+
+*_promptLabel.labelString: %s
+
+! SetDefaultStylesWarningDialog
+
+*_reallyResetStyles.labelString: Do you really want to reset all the styles to their defaults?
+
+! AnimationSettingsDialog
+
+*_animationForSelectedCells.labelString: Animation for Selected Cells
+*_setTo.labelString: Set to
+*_multiplyBy.labelString: Multiply by
+*_framesPerSecond.labelString: frames/second
+
+*_loopOverSelectedCells.labelString: Loop over selected cells
+*_numberOfTimesToRepeatLoop.labelString: Number of times to repeat loop:
+*_forever.labelString: Forever
+*_times.labelString: times
+
+*_typeOfLoop.labelString: Type of loop
+*_straightThroughLoop.labelString:  Straight through
+*_forwardLoop.labelString: Forward
+*_backwardLoop.labelString: Backward
+*_backAndForthLoop.labelString: Back and forth
+*_removeAllSubLoops.labelString: Remove all subgroups
+
+! AlignGraphicsDialog
+
+*_align.labelString: Graphic Alignment
+*_alignEdgesOfAllSelectedGraphics.labelString: \
+Align the edge(s) of all selected graphics\n\
+cells with the first selected one.
+
+*_note.labelString: Note:
+*_noteLabel.labelString:  \
+If you check both Top and Bottom, or\n\
+both Left and Right, the cells will be\n\
+resized so both edges are aligned.
+
+! ConvertCellToPostScriptDialog
+*_convertCellToPSWarning.labelString: \
+Are you sure you want to convert the selected cells\n\
+to PostScript? This operation may take a while.
+
+
+! GetCustomSizeDialog
+*_newFontSize.labelString: New font size:
+
+!  RefuseToCloseRunningNotebookDialog
+*RefuseToCloseRunningNotebookDialog._label.foreground: Red
+*_refuseToCloseRunningNotebook.labelString: Refuse to close running notebook!
+
+! ColorOptionsDialog
+*_whenRenderingLinesAndPolygons.labelString: When Rendering Lines and Polygons
+*_whenRenderingBitmapImages.labelString: When Rendering Bitmap Images (Density Plots)
+*_useDitherPatterns.labelString: Use dither patterns
+*_useSolidColors.labelString: Use solid colors
+
+! CustomFontSizeDialog
+*_newMagnification.labelString: New magnification:
+
+! CustomLeadingDialogBox
+
+*_setExternalLeading.labelString: Set external leading to
+*_customLeadingTag.labelString: \
+This value will be added to the font's\n\
+point size to determine the line spacing.
+
+! FileLocationsDialog
+
+*_defaultsNotebook.labelString: Defaults notebook:
+*_helpNotebook.labelString: Front End Help notebook:
+
+! MakeIndexDialog
+
+*_separatorBetweenNameAndPage.labelString: Separator between names and pages
+*_separatorBetweenPageNumbers.labelString: Separator between page numbers
+*_separatorBetweenPageNumberRanges.labelString: Separator between page numbers and ranges
+*_makeIndexTag.labelString: \
+An index based on cell keywords will be\n\
+placed in the clipboard when you click OK.
+
+! SpaceAroundCellDialog
+
+*_spaceAboveCell.labelString: Space above cell
+*_spaceBelowCell.labelString: Space below cell
+
+! EvaluationInPlaceOfAlertDialog
+
+*_evaluationInPlaceOfAlertTag.labelString: \
+As a short cut, you can use Shift-Return, or Enter \n\
+in place of the "Evaluate Cells" menu command.\n\n\
+This message will appear only once.
+
+! EvaluateNextInputDialog
+*_evaluateNextInputTag.labelString: \
+As a short cut, you can use Shift-Enter\n\
+An place of the "Evaluate Next Input" menu command.\n\n\
+This message will appear only once.
+
+! MathLink Connections
+
+
+*_autoLaunchTag.labelString: Automatically launch the default kernel when the front end is launched
+*_connectionName.labelString: Connection Name:
+*_basicOptions.labelString: Basic Options
+*_launchKernelOn.labelString: Launch kernel on
+*_localMachineButton.labelString: Local Machine
+*_remoteMachineButton.labelString: Remote Machine
+*_shellCommandToLaunchKernel.labelString:Shell Command to Launch Kernel
+*_remoteComputerToRunKernel.labelString: Remote Computer to Run Kernel
+*_sessionFile.labelString: Session file
+*_appendNameToInOutPrompts.labelString: Append name to In/Out prompts
+*_translateReturns.labelString: Translate returns
+*_autoStartOnLaunch.labelString: Automatically launch on front end startup
+*_advancedOptions.labelString: Advanced Options
+*_argumentsToMLOpen.labelString: Arguments passed to MLOpen
+*_stringPassedToShellToLaunchKernel.labelString: String passed to shell to launch kernel
+
+! EvaluateInDialog
+
+*_evaluateInDialogTag.labelString: \
+As a short cut, you can use Shift-Mod2-Return\n\
+instead of the "Evaluate in Subsession" menu command.\n\n\
+This message will appear only once.
+
+! FunctionBrowserDialog
+!
+! This affects how many items are shown in the 4 browsers across the
+! top of the help browser.
+!
+
+*_browserList.visibleItemCount: 5
+
+! IntroDialog
+
+*_mathematicaLabel.labelType: Pixmap
+*_mathematicaLabel.labelPixmap: welcome.xbm
+*_mathematicaLabel.foreground: Purple
+
+*_toGetStarted.labelString: To get started using Mathematica
+*_gettingStartedButton.labelString: Getting Started...
+
+*_toLearnAboutShortcuts.labelString: To learn about shortcuts in Mathematica
+*_shortcutsButton.labelString: Shortcuts...
+
+*_toGetAListOfFunctions.labelString: To get a list of the functions in Mathematica
+*_functionBrowserButton.labelString: Function Browser...
+
+*_toCloseForever.labelString: To make this dialog not appear next time
+*_closeForeverButton.labelString: Close Forever
+
+! ExplainWhyTheBeepDialog
+
+*_explainWhyTheBeepTag.labelString: \
+Mathematica just produced a beep because it did not\n\
+understand what you wanted to do, or could not do it,\n\
+or because an error occurred while it was working.\n\n\
+Any time Mathematica beeps, you can find out what\n\
+the specific problem was by choosing the "Why the Beep?"\n\
+command from the Help menu.\n\n\
+You will see this message only once per session \n\
+If you never want to see it again,\n\
+even in future sessions, click Don't Show Again.
+
+! BreakingStructureDialog
+
+*_breakingStructureTag.labelString: \
+The editing operation you just attempted would break\n\
+up a mathematically meaningful structure. You may do\n\
+this if you like, but you will need to repair the\n\
+structure, or remove the rest of it, before the\n\
+expression can be evaluated.\n\n\
+If you want to cut or delete a mathematical structure\n\
+select the entire structure and cut or delete it as a unit.\n\n\
+If you never want to see this warning again, \n\
+even in future sessions, click\n\
+Don't Show Again.  Do this only if you are sure you understand\n\
+what you are doing.
+
+! PrintDialog
+
+*_pagesLabel.labelString: Pages:
+*_allLabel.labelString: All
+*_fromLabel.labelString: From:
+*_toLabel.labelString: To:
+*_magnificationLabel.labelString: Magnification
+
+*_printDestination.labelString: Print Destination
+*_printerButton.labelString: Print to
+*_fileButton.labelString: File
+*_browseButton.labelString: Browse...
+*_paperSizeLabel.labelString: Paper size:
+*_paperOrientationLabel.labelString: Orientation:
+*_portraitItem.labelString: Portrait
+*_landscapeItem.labelString: Landscape
+*_includeMathFonts.labelString: Include Mathematica fonts in document
+*_includePostScriptResourceComments.labelString: Include PostScript resource comments
+
+! TypesetFormPreferencesDial
+
+*_structuredSelection.labelString: \
+Structured Selection\n\
+(If checked, the selection will always be forced\nto contain complete selections)
+
+*_warnAboutBreakingUpSpecialStructures.labelString: Warn about breaking up special structures
+*_automaticallyReLineBreakDuringEditing.labelString: Automatically re-linebreak during editing
+*_autoIndentExpressions.labelString: Auto-indent expressions
+*_duplicateOutputCellsWhenEdited.labelString: Duplicate output cells when edited
+*_showTemplateBeforeEvaluation.labelString: Show template before evaluation
+*_keepEvaluateInPlaceHistory.labelString: Keep evaluate-in-place history
+*_autoReFormatInputCells.labelString: Automatically re-format input cells when\nthey are evaluated
+
+! NewTypesetFormNameDialog
+
+*_typesetFormName.labelString: Typeset Form name
+*_mathItalics.labelString: Math Italics
+*_mathematicaNotation.labelString: Mathematica Notation
+*_traditionalNotation.labelString: Traditional Notation
+
+*_cellLabel.labelString: Cells
+*_totalBytes.labelString: Total Bytes
+*_contentLabel.labelString: Content
+*_totalLabel.labelString: Total:
+*_inputCellsLabel.labelString: Input Cells:
+*_outputCellsLabel.labelString: Output Cells:
+*_graphicCellsLabel.labelString: Graphics Cells:
+*_otherCellsLabel.labelString: Other Cells:
+*_postScriptTextLabel.labelString: PostScript Text:
+*_bitmapCacheLabel.labelString: Bitmap Caches:
+*_statsFor.labelString: Stats for
+*_allCells.labelString: All Cells
+*_selectedCells.labelString: Selected Cells
+*_reflectSharing.labelString: Reflect Sharing
+
+!Properties Dialog
+
+*_notebooksButton.labelString: Notebooks
+*_palettesButton.labelString: Palettes
+*_uninstalledFontsButton.labelString: Uninstalled Fonts
+*_typesetFormNamesButton.labelString: Typeset Form Names
+*_relativeSizeTablesButton.labelString: Relative Size Table
+*_automaticLimitsStyleButton.labelString: Automatic Limits Style
+
+*_addItemButton.labelString: Add...
+*_editItemButton.labelString: Edit...
+*_removeItemButton.labelString: Remove
+*_temporaryItemButton.labelString: Temporary Item
+*_permanentItemButton.labelString: Permanent Item
+
+! UninstalledFontsDialog
+
+*_uninstalledFontNames.labelString: Uninstalled font name:
+*_whenRenderingThisFont.labelString: When rendering this font, substitute the following installed font:
+*_defaultBasedOnContext.labelString: Default based on context
+*_specificFont.labelString: Specific font:
+
+! RelativeSizesDialog
+
+*_relativeSizesTableName.labelString: Relative sizes table name:
+*_ratiosToAdjustFontSizeBy.labelString: Ratios to adjust font size by when moving between format types:
+*_displayToLarge.labelString: Display to Large:
+*_displayToText.labelString: Display to Text:
+*_textToScript.labelString: Text to Script:
+*_scriptToScriptScript.labelString: Script to Script-script:
+
+! FavoriteFilesDialog
+
+*_nameLabel.labelString: Name:
+*_includeInSubMenu.labelString: Include in submenu
+*_openAutomatically.labelString: Open automatically
+*_fullPathName.labelString: Full path name:
+
+! AutomaticLimitsStyleDialog
+
+*_symbolString.labelString: Symbol String:
+
+! ConvertGraphicToXImageDialog
+
+*_convertGraphicToXImageTag.labelString: \
+Are you sure you want to convert the selected cells\n\
+to an XImage (client side) graphic?
+
+! ConvertGraphicToPixmapDialog
+
+*_convertGraphicToPixmapDialogTag.labelString: \
+Are you sure you want to convert the selected cells\n\
+to a Pixmap (server side) graphic?
+
+! ConvertGraphicCellToInputFormDialog
+*_convertGraphicCellToInputFormDialogTag.labelString:  \
+Are you sure you want to convert the selected cells to Input Form?\n\
+This operation may take a while.
+
+! XEnvironmentDialog
+
+*_displayAttributes.labelString: Display Attributes
+*_windowAttributes.labelString: Window Attributes
+*_keyboardAttributes.labelString: Keyboard Attributes
+*_directoryPaths.labelString: Directory Paths
+*_findKeysAndModifiers.labelString: Find keys and modifiers...
+
+! KeySymsAndModifiersDialog
+
+*_pressAnyKeyToDisplayItsAttributes.labelString: Press any key to display its attributes.
+*_asciiLabel.labelString: ASCII:
+*_keysymLabel.labelString: KeySym:
+*_modifiersLabel.labelString: Modifiers:
+*_addAsMod1Modifier.labelString: Add as primary modifier
+*_addAsMod2Modifier.labelString: Add as secondary modifier
+*_removeAsMod1Modifier.labelString: Remove as primary modifier
+*_removeAsMod2Modifier.labelString: Remove as secondary modifier
+
+*_invalidKeyCombinationWarningTag.labelString: \
+You typed an unused key/modifier combination.\n\n\
+If you are trying to locate the Mod1 or Mod2 key, you \n\
+should select "Find keys and modifiers..."\n\
+in the X Environment Information dialog under the Help menu.
+
+*_suppressButton.labelString: Suppress
+
+! BackgroundTasksDialog
+*_runningKernelsAndTasks.labelString: Running Kernels and Tasks
+*_quitKernel.labelString: Quit Kernel
+*_interruptCalculation.labelString: Interrupt Calculation
+*_exitDialog.labelString: Exit Dialog
+*_abortCalculation.labelString: Abort Calculation
+
+*_lastQueryMessage.labelString: \
+There are currently no notebooks open.\n\
+Do you wish to create a new notebook,  \n\
+open a notebook, or quit Mathematica?
+
+
+! Style Inspector
+
+*_closeWindow.labelString: Close
+
+! Progress Dialog
+*ProgressDialog*dialogPositioning: DIALOG_POSITIONING_INITIAL_CENTER
+*_canBeInterruptedLabel.labelString: (Interrupt with Ctrl+C.)
+
+! File Browser
+
+*FileBrowser*alignment: ALIGNMENT_BEGINNING
+
+! Syntax Error in File
+
+*_syntaxErrorInFile1.labelString: There was a syntax error in the file you tried to open
+
+! EditButtonBox
+
+*_buttonStyleLabel.labelString: Button style:
+*_buttonFunction.labelString: Button function:
+*_buttonAlwaysActive.labelString: Button always active
+*_buttonEvaluatorLabel.labelString: Button evaluator:
+*_buttonNoteLabel.labelString: Button note:
+*_buttonData.labelString: Button data:
+*_buttonSourceLabel.labelString: Button source:
+
+
+! Option Inspector
+
+*_viewAs.labelString: View
+*_scope.labelString: Scope:
+
+!  Strong Error
+
+*_strongErrorLabel.labelString: There was an error on startup that \n\
+may make the front end unusable.
+
+! ViewPoint Selector
+
+! bug in scrollbar geometry SetValues
+
+*_xScroll.orientation: horizontal
+*_yScroll.orientation: horizontal
+*_zScroll.orientation: vertical
+*_controlXYZ.labelString: Cartesian
+*_controlRTP.labelString: Spherical
+*_viewPointDA.background: gray85
+
+
+*_convertInputToStandardFormItem.labelString: Convert Input Form to Standard Form
+*_convertOutputToStandardFormItem.labelString: Convert Output to Standard Form
+*_preserveStyleSheetItem.labelString: Preserve customized style sheet
+*_generateBitmapCachesItem.labelString: Generate bitmap caches for all graphics cells
+*_doWholeDirectory.labelString: Convert whole directory
+*_recursiveItem.labelString: Recursive
+*_interactiveOverwriteItem.labelString: Interactively overwrite
+*_interactiveSkipItem.labelString: Interactively skip
+*_interactiveAskItem.labelString: Interactively ask
+
+*_solidLabel.labelString: Solid Color
+*_ditherLabel.labelString: Dither Color
+*_darker.labelString: Darker
+*_brighter.labelString: Lighter
+
+*_red.labelString: Red
+*_blue.labelString: Blue
+*_green.labelString: Green
+*_hue.labelString: Hue
+*_light.labelString: Light
+*_saturation.labelString: Sat
+
+*_redScale.titleString: R
+*_blueScale.titleString: B
+*_greenScale.titleString: G
+
+*_hueScale.titleString: H
+*_lightScale.titleString: L
+*_saturationScale.titleString: S
+
+*_exitButton.labelString: Exit
+*_continueButton.labelString: Continue
+
+*_dontShowAgainButton.labelString: Don't Show Again
+
+*_showOnStartup.labelString: Show On Startup
+
+! PastingTraditionalForm
+
+*_pastingTraditionalFormLabel.labelString: \
+You are attempting to paste a TraditionalForm expression into \n\
+a StandardForm cell. If you want to be sure that the meaning \n\
+of the expression will be preserved, you should first convert \n\
+it to StandardForm.
+
+*_pasteWithAFormBoxWrapperButton.labelString: Paste with a FormBox wrapper
+*_pasteLiterallyButton.labelString: Paste literally
+
+*_toCloseThisDialogBox.labelString: To close this dialog box
+*_closeButton.labelString: Close
+
+*_clearButton.labelString: Clear
+
+!*XmFENotebook.width: 500
+!*XmFENotebook.height: 600
+
+*_getCoordinatesLabel.labelString: \
+To get coordinates in a 2D plot, select it, hold down the Mod1 key,\n\
+and move the pointer over the area of the plot. The\n\
+coordinate values of the pointer position will be displayed\n\
+in the status bar.\n\n\
+If you click one or more times while holding down the Mod1\n\
+key the coordinates will be selected. You can then copy and\n\
+paste the coordinate values to an input cell.
+
+*_convertMathematicaRGBColorsLabel.labelString: \
+Convert Mathematica RGB colors to Adobe Illustrator CMYK colors:
+
+*_asDirectComplementButton.labelString: As direct complement (no black)
+*_forQMSColorScriptButton.labelString: For QMS ColorScript 100
+*_usingAMathematicaFunctionButton.labelString: Using a Mathematica function
+
+*_enterPasswordToDecodeCellsLabel.labelString: \
+Enter the password to decode the selected cells:
+
+*_passwordLabel.labelString: Password:
+*_enterKeyAndPasswordToEncodeCellsLabel.labelString: \
+Please enter a key and password to encode the selected cells.
+
+*_keyLabel.labelString: Key:
+*_encryptWarningLabel.labelString: \
+WARNING! Once you have encrypted a cell, it is ABSOLUTELY\n\
+IMPOSSIBLE to recover the data if you forget the password.
+
+*_evaluateButton.labelString: Evaluate
+
+*EvaluationNonstandardForm*_warningLabel.labelString: \
+Warning: You are giving input that is not in Mathematica\n\
+InputForm or StandardForm
+*EvaluationNonstandardForm*_label2.labelString: \
+Mathematica has rules for trying to convert from other\n\
+forms, but ambiguities may arise.
+*EvaluationNonstandardForm*_label3.labelString: \
+To see how Mathematica will convert your expression,\n\
+choose items from the Convert To submenu of the Cell menu.
+
+*_inputFormForBoxesOrCellExpressionLabel.labelString: \
+InputForm for boxes or cell expression:
+
+*_insertButton.labelString: Insert
+
+*_enterFontSize.labelString: New font size:
+
+*_arrowLabel.labelString: ->
+
+*SaveAsV22Notebook*_label1.labelString: \
+To save the notebook in V2.2 (or older) file format, any typeset\n\
+expression cells need to be converted to text form (either InputForm\n\
+or OutputForm).
+
+*SaveAsV22Notebook*_label2.labelString: \
+If you choose not to convert the cells, they will be written to the\n\
+file in the typeset linear syntax notation.
+
+*_convertInputCellsToInputForm.labelString: Convert input cells to InputForm
+*_convertOutputCellsToOutputForm.labelString: Convert output cells to OutputForm
+
+*SaveAsV22Notebook*_label3.labelString: \
+Please note that certain elements of Notebooks are not supported by\n\
+older versions of Mathematica. These elements will either be omitted\n\
+or translated as closely as possible.
+
+*EditingSharedStyles*_label1.labelString: \
+This notebook is using a shared style sheet. To edit the shared\n\
+style sheet, open it directly using the Open command in the File menu.
+
+*EditingSharedStyles*_label2.labelString: \
+Click Import Styles to import a private copy of the styles into\n\
+this notebook.
+
+*_importAndEditStylesButton.labelString: Import and Edit Styles
+*_viewStylesButton.labelString: View Styles
+
+*_optionDisplayObjectLabel1.labelString: \
+An option display object showing the current value of the specified\n\
+option will be placed in the clipboard.  You can paste the object\n\
+anywhere in a notebook.
+
+*_optionDisplayObjectNameLabel.labelString: Option name:
+
+*_optionDisplayObjectLabel2.labelString: \
+To make this objecct show the value of the options at the selected\n\
+cell, enter a unique name below. The name will be assigned as a\n\
+CellTag for the selected cell:
+
+*_optionDisplayObjectReferenceNameLabel.labelString: Reference name:
+
+*_counterBoxLabel1.labelString: \
+A counter displaying the specified value will be placed in the\n\
+clipboard.  You can paste the counter anywhere in a notebook.
+
+*_counterNameLabel.labelString: Counter name:
+
+*_counterBoxLabel2.labelString: \
+To make this counter object be a reference to the selected\n\
+cell(s), enter a unique name below.  The name will be assigned\n\
+as a CellTag for the selected cell(s):
+
+*_counterReferenceLabel.labelString: Reference name:
+
+*_copyLinkLabel.labelString: \
+This dialog puts on the clipboard a hyperlink object that points\n\
+to the currently selected cells.
+*_textOfHyperlink.labelString: Text of hyperlink:
+*_uniqueTagForCurrentlySelectedCells.labelString: Unique tag for currently selected cells:
+*_includeFileName.labelString: Include file name in link destination
+
+*_makeLabel.labelString: Make
+*_tableButton.labelString: Table (plain GridBox)
+*_matrixButton.labelString: Matrix
+*_paletteButton.labelString: Palette
+*_numberOfRows.labelString: Number of rows:
+*_numberOfColumns.labelString: Number of columns:
+*_drawLinesBetweenRowsButton.labelString: Draw lines between rows
+*_drawLinesBetweenColumnsButton.labelString: Draw lines between columns
+*_drawFrameButton.labelString: Draw frame button
+*_fillWithButton.labelString: Fill with: 
+*_fillDiagonally.alignment: ALIGNMENT_BEGINNING
+*_fillDiagonally.labelString: Fill diagonal:
+
+*_addNewCellTags.labelString: Add new cell tags:
+*_addButton.labelString: Add
+*_removeButton.labelString: Remove
+
+*_window.labelString: Window:
+
+*_goBackButton.labelString: << Go Back
+
+*EvaluateTraditionalFormDialog*_label1.labelString: \
+Warning: You are asking Mathematica to interpret TraditionalForm\n\
+as input. Only InputForm and StandardForm provide complete and\n\
+precise specifications of Mathematica input.
+
+*EvaluateTraditionalFormDialog*_label2.labelString: \
+Mathematica has rules for trying to convert TraditionalForm\n\
+input, but ambiguities may arise.
+
+*EvaluateTraditionalFormDialog*_label3.labelString: \
+To see how Mathematica will convert your expression, choose\n\
+items from the Convert To submenu of the Cell menu.
+
+*_removeOptionsWarningLabel.labelString: \
+Are you sure you want to remove all the option settings\n\
+from the current selection? Click Recursive to remove options\n\
+from all subelements as well.
+
+*_recursiveButton.labelString: Recursive
+
+! AutoSavePackage
+
+*AutoSavePackage*_label1.labelString: \
+The Notebook you asked to save contains initialization cells.\n\
+If you want to be able to load this notebook into the kernel\n\
+directly using the Get or Needs functions, you should click\n\
+Create Auto Save Package. 
+
+*AutoSavePackage*_label2.labelString: \
+This will cause the frontend to automatically maintain a package\n\
+(.m) file in the same directory as the notebook. The package will\n\
+contain all the initialization cells from the notebook; it will\n\
+be updated each time the notebook is saved.
+
+*_createAutoSavePackageButton.labelString: Create Auto Save Package
+*_dontCreateAutoSavePackageButton.labelString: Don't Create Auto Save Package
+
+*_byLabel.labelString: x
+
+*_previousButton.labelString: Find Previous
+*_sessionName.labelString: Session name:
+
+*_createSessionDumpLabel.labelString: Dump session to file:
+
+*ConvertingFrom22Dialog*_label1.labelString: \
+The notebook you asked to open is in an old file format. You must\n\
+convert the notebook to the current file format before it can be\n\
+opened. The new file will have a name ending in ".nb".
+
+*ConvertingFrom22Dialog*_label2.labelString: \
+You may choose to automatically convert all input and/or output cells\n\
+to StandardForm, the editable 2D form used by default in Version 4. This\n\
+conversion can be slow for notebooks containing complex expressions.
+
+*ConvertingFrom22Dialog*_label3.labelString: \
+Version 4 supports a more sophisticated style sheet. Check the option\n\
+below only if you have changed the style definitions in this notebook.
+
+*ConvertingFrom22Dialog*_label4.labelString: \
+Bitmap caches for PostScript cells cannot be converted. Check the\n\
+option below to regenerate them automatically (can be very slow).
+
+*_convertButton.labelString: Convert
+
+*_retryButton.labelString: Retry
+*_dumpButton.labelString: Dump
+
+*_licenseNumberLabel.labelString: License number:
+
+*_mathReaderButton.labelString: MathReader
+*_networkLicense.labelString: Network License...
+
+*_enterLicense.labelString: License Number:
+*_enterPassword.labelString: Front end password:
+
+*_licenseServerLabel.labelString: Name or IP address of MathLM server:
+
+*_passwordBigMessage.labelString: \
+No valid single-machine Mathematica password entry found.\n\
+Please enter your Mathematica password information. If you \n\
+do not have a password, you can still use Mathematica in \n\
+MathReader mode.
+
+*_possibleServerMessage.labelString: \
+A password entry for a network license server was found,\n\
+but no license was returned. The license server may not be\n\
+responding, or no licenses are available from the server.\n\
+You may need to contact your system administrator to\n\
+start the license server, or wait until a license is\n\
+available.
+
+*_chooseLicenseServerMessage.labelString: \
+To use a network license, you must be connected to a network and a\n\
+Mathematica license server must be running. Give information here as\n\
+supplied by your system administrator.
+
+*_machineNameLabel.labelString: Machine name:
+*_machineIDLabel.labelString: Math ID:
+*_organizationLabel.labelString: Organization:
+*_userNameLabel.labelString: Name:
+*_passwordLabel.labelString: Password:
+*_passwordFileLabel.labelString: Password file:
+
+*_makeIndexLabel.labelString: \
+When you click OK, an index based on the Cell Tags in the\n\
+notebook will be placed on the clipboard.\n\
+You can then use Paste in the Edit menu to place the index\n\
+where you want it.
+
+*_textFormatButton.labelString: Text format
+*_hyperlinksButton.labelString: Hyperlinks
+*_pageReferencesButton.labelString: Page references
+*_sectionReferencesButton.labelString: Section references
+
+*_startingPageLabel.labelString: Starting page:
+*_noHeaderOnFirstPage.labelString: No header on first page
+*_noFooterOnFirstPage.labelString: No footer on first page
+*_leftAndRightPages.labelString: Left and right pages
+*_putTheFirstPageOnTheLabel.labelString: First page on:
+*_leftPageHeader.labelString: Left page header
+*_rightPageHeader.labelString: Right page header
+*_leftPageFooter.labelString: Left page footer
+*_rightPageFooter.labelString: Right page footer
+
+*_leftAlignedLabel.labelString: Left aligned:
+*_centerLabel.labelString: Center:
+*_rightAlignedLabel.labelString: Right aligned:
+
+*_includeLineButton.labelString: Include line
+*_recycleMenuSlot.labelString: Recycle menu slot automatically
+
+*_reallyDeleteAllOutput.labelString: Really delete all output?
+
+*_dontOpenButton.labelString: Abort open
+*_otherStyleNameLabel.labelString: Style name:
+
+*_rawMathLinkConnection.labelString: Raw MathLink connection
+*_pureKeys.labelString: Pure keys
+
+*_registerButton.labelString: Register...
+
+*_counterType.labelString: Counter type:
+*_useTheCounterValueCorrespondingToTheLocationLabel.labelString: \
+Use the counter value corresponding to the location of:
+*_theCounterObject.labelString: This counter object
+*_theFirstCellWithTheTag.labelString: The first cell with the tag:
+
+*CreateCounterBox*visibleItemCount: 5
+*CreateCounterBox*scrollBarDisplayPolicy: STATIC
+
+*CreateHyperlink*visibleItemCount: 5
+*CreateHyperlink*scrollBarDisplayPolicy: STATIC
+
+*_destinationNotebook.labelString: Destination notebook or URL:
+*_currentNotebookButton.labelString: Current notebook
+*_otherNotebookButton.labelString: Other notebook:
+*_notebookNameLabel.labelString: Notebook name:
+*_destinationWithinNotebook.labelString: Destination within notebook:
+*_entireNotebook.labelString: Entire notebook
+*_cellsWithTag.labelString: Cells with the tag:
+
+*_createAnObjectLabel.labelString: \
+Create an object to display the current setting of the option or variable:
+*_globalVariableLabel.labelString: Global variables:
+*_globalOptionNameLabel.labelString: Global options:
+*_notebookOptionLabel.labelString: Notebook options:
+*_cellOptionLabel.labelString: Cell options:
+*_characterOptionLabel.labelString: Character options:
+
+*_useTheValueCorrespondingToLabel.labelString: \
+Use the value corresponding to:
+*_theCurrentSelectionToggle.labelString: The current location
+*_theFirstCellWithTheTagToggle.labelString: The first cell with the tag:
+
+*CreateOptionValueBox*visibleItemCount: 5
+*CreateOptionValueBox*scrollBarDisplayPolicy: STATIC
+
+*_cellTagLabel.labelString: Cell Tag:
+*_tagsOfCurrentlySelectedCellsLabel.labelString: \
+Tags of currently selected cell(s):
+*_allCellTagsInTheNotebookLabel.labelString: All cell tags in the notebook:
+
+*EditCellTags*visibleItemCount: 5
+*EditCellTags*scrollBarDisplayPolicy: STATIC
+
+*_enterPasswordButton.labelString: Enter Password
+
+! AddInterpretationBox
+*_create.labelString: Create:
+*_createButton.labelString: Create
+*_interpretationBox.labelString: InterpretationBox
+*_tagBox.labelString: TagBox
+*_expression.labelString: Expression
+*_tagStyle.labelString: TagStyle:
+*_editable.labelString: Editable
+*_selectable.labelString: Selectable
+*_autoDelete.labelString: AutoDelete
+*_stripWrapperBoxes.labelString: StripWrapperBoxes
+*_deletionWarning.labelString: DeletionWarning
+*_syntaxForm.labelString: SyntaxForm:
+
+! Spell Checker
+*_reasonForStoppingLabel.labelString: Reason for stopping:
+*_skipThese.labelString: Skip These
+*_originalWordLabel.labelString: Original word:
+*_replaceWithLabel.labelString: Replace with:
+*_alternativesLabel.labelString: Alternatives:
+*_skipLabel.labelString: Skip
+*_replaceLabel.labelString: Replace
+*_addWordLabel.labelString: Add Word
+*_optionsLabel.labelString: Options...
+*_storeWordsAndOptionsLabel.labelString: Store words and options
+
+*VC*_rowColumn2.marginWidth: 0
+*VC*_rowColumn2.marginHeight: 0
+*VC*_visualAndDepth.labelString: Visual ID, Class and Depth
+*VC*_colormapParameters.labelString: Colormap Parameters
+*VC*_twoColor.labelString: Allocate only black and white
+*VC*_greedyColors.labelString: Allocate up to
+*VC*_maxPercentColormapAllocated.labelString:  % of the colormap
+*VC*_standardColormaps.labelString: Try Standard Colormaps
+*VC*_extraOptions.labelString: Extra Options
+*VC*_allowEditRes.labelString: Enable the EditRes protocol
+*VC*_tileWidthLabel.labelString: Set dithering tile width to
+*VC*_tileWidthEndLabel.labelString: pixels (0 = automatic)
+*VC*_usePrivateColormap.labelString: Use private colormap
+*VC*_startButton.labelString: Start XFE
+*VC*_bestButton.labelString: Best Visual
+*VC*_quitButton.labelString: Quit
+*VC*_titleLabel.labelString: \
+These parameters affect how the front end interacts with\n\
+your X server.  Please choose your desired values and click\n\
+"Start XFE".
+
+*_usemodmapLabel.labelString: \
+To change your modifier keys, use the program 'xmodmap'\n\
+outside of the front end.
+
+*_alignLeft.iconPixmap: align_left
+*_alignLeft.borderOnSelect: TRUE
+*_alignLeft.fillOnSelect: FALSE
+*_alignLeft.selectColor: black
+*_alignRight.iconPixmap: align_right
+*_alignRight.borderOnSelect: TRUE
+*_alignRight.fillOnSelect: FALSE
+*_alignRight.selectColor: black
+*_alignCenter.iconPixmap: align_center
+*_alignCenter.borderOnSelect: TRUE
+*_alignCenter.fillOnSelect: FALSE
+*_alignCenter.selectColor: black
+*_alignBoth.iconPixmap: align_both
+*_alignBoth.borderOnSelect: TRUE
+*_alignBoth.fillOnSelect: FALSE
+*_alignBoth.selectColor: black
+*_goBack.labelString: Back
+*_goBack.iconPixmap: go_back
+
+*_animateBackwards.iconPixmap: an_back
+*_animateBackwards.borderOnSelect: TRUE
+*_animateBackwards.iconButtonElements: pixmap
+*_animateBackwards.labelString: Backwards
+*_animateCyclical.iconPixmap: an_cyclical
+*_animateCyclical.borderOnSelect: TRUE
+*_animateCyclical.iconButtonElements: pixmap
+*_animateCyclical.labelString: Cyclical
+*_animateForwards.iconPixmap: an_forward
+*_animateForwards.borderOnSelect: TRUE
+*_animateForwards.iconButtonElements: pixmap
+*_animateForwards.labelString: Forward
+*_animatePause.iconPixmap: an_pause
+*_animatePause.borderOnSelect: TRUE
+*_animatePause.iconButtonElements: pixmap
+*_animatePause.labelString: Pause
+*_animateSlower.iconPixmap: an_slower
+*_animateSlower.borderOnSelect: TRUE
+*_animateSlower.iconButtonElements: pixmap
+*_animateSlower.labelString: Slower
+
+
+*XmIconButton.shadowThickness: 1
+*XmPushButton.shadowThickness: 1
+*XmPushButtonGadget.shadowThickness: 1
+*XmCascadeButton.shadowThickness: 1
+*XmCascadeButtonGadget.shadowThickness: 1
+*XmComboBox.shadowThickness: 1
+
+
+*Menu.shadowThickness: 1
+*Menu.marginHeight: 0
+*Menu.marginWidth: 0
+*XmScrolledWindow.spacing: 2
+*XmMainWindow.showSeparator: TRUE
+*_statusFrame.shadowThickness: 1
+*mainWindowMarginWidth: 0
+*mainWindowMarginHeight: 0
+
+! Keep lists from growing horizontally in some motifs.
+! Uncomment this if, in particular, your spell checker grows wider than
+| its dialog window.
+!*XmList:.listSizePolicy: XmCONSTANT
+
+!if you can't read your insensitive menus, turn this off
+!*insensitive3D: True
+
+! Turn on some strategically placed ToolTips
+*XmToolTip.toolTips: TRUE
+*XmToolTip*background: #F5DEB3
+
+! If you want to see most of the widgets names uncomment this
+!*baseTranslations: \
+!#override \n\
+!<Enter>: tooltip-schedule() \n\
+!<Leave>: tooltip-cancel()
+
